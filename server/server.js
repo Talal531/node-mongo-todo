@@ -22,6 +22,15 @@ app.post('/todos', (req, res) => {
 
 });
 
+// get todos
+app.get('/todos', (req, res) => {
+    Todo.find().then((todos) => {
+        res.send({ todos })
+    }, (err) => {
+        res.status(400).send(err);
+    });
+});
+
 app.listen(5000, () => {
     console.log(`Server is up on 5000 port`);
 });
